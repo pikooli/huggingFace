@@ -12,7 +12,7 @@ export default function Home() {
   const classify = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     if (!text) return;
-    setReady(false);
+    if (!ready) setReady(false);
 
     try {
       if (abortControllerRef.current) {
@@ -25,7 +25,7 @@ export default function Home() {
       if (!ready) setReady(true);
       const json = await result.json();
       setResult(json);
-      setResultArray([...resultArray, json]);
+      setResultArray([...resultArray, {...json, text}]);
     } catch (error) {
       if (error instanceof Error && error.name === 'AbortError') {
         console.log('Request was aborted');
@@ -35,7 +35,7 @@ export default function Home() {
       }
     }
   };
-
+console.log(ready, result);
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-12">
       <h1 className="text-5xl font-bold mb-2 text-center">Transformers.js</h1>

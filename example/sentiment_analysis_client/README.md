@@ -45,3 +45,7 @@ public
         ├── tokenizer_config.json
         └── vocab.txt
 ```
+
+## onnx
+
+for the model file look at this : https://huggingface.co/docs/transformers.js/en/custom_usage#convert-your-models-to-onnx
