@@ -1,9 +1,16 @@
 import { pipeline, env } from '@huggingface/transformers';
 
-// Skip local model check
+// remote model
 env.allowLocalModels = false;
 const task = 'text-classification';
 const model = 'Xenova/distilbert-base-uncased-finetuned-sst-2-english';
+
+// local model
+// env.allowLocalModels = true;
+// env.allowRemoteModels = false;
+// const task = 'text-classification';
+// const model = 'distilbert-base-uncased-finetuned-sst-2-english';
+
 let instance = null;
 
 (async () => {
